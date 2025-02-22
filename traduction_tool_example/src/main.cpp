@@ -5,6 +5,7 @@
 #include "bn_sprite_ptr.h"
 #include "bn_regular_bg_ptr.h"
 #include "bn_affine_bg_ptr.h"
+#include "bn_string.h"
 
 #include "common_info.h"
 #include "common_variable_8x16_sprite_font.h"
@@ -12,6 +13,7 @@
 #include "traduction_sprite_language_flags.hpp"
 #include "traduction_regular_bg_language_flags_big_regular.hpp"
 #include "traduction_affine_bg_language_flags_big_affine.hpp"
+#include "traduction_string_traduction_texts.hpp"
 #include "traduction_languages.hpp"
 
 
@@ -94,7 +96,7 @@ void affine_bg_scene(bn::sprite_text_generator& text_generator) {
         "START: go to next scene",
     };
 
-    common::info info("affine bg", info_text_lines, text_generator);
+    common::info info("Affine bg", info_text_lines, text_generator);
 
     traduction::languages language = traduction::languages::SPANISH;
 
@@ -103,7 +105,7 @@ void affine_bg_scene(bn::sprite_text_generator& text_generator) {
     bn::affine_bg_ptr affine_bg(affine_bg_item.create_bg());
     affine_bg.set_rotation_angle_safe(45);
     affine_bg.set_wrapping_enabled(false);
-    
+
     while (!bn::keypad::start_pressed()) {
 
         if (bn::keypad::a_pressed()) {
@@ -125,6 +127,56 @@ void affine_bg_scene(bn::sprite_text_generator& text_generator) {
     }
 }
 
+void string_scene(bn::sprite_text_generator& text_generator) {
+    constexpr bn::string_view info_text_lines[] = {
+        "A: next flag",
+        "",
+        "START: go to next scene",
+    };
+
+    common::info info("String", info_text_lines, text_generator);
+
+    traduction::languages language = traduction::languages::SPANISH;
+
+    bn::sprite_text_generator text_generator_letters(common::variable_8x16_sprite_font);
+    text_generator_letters.set_alignment(bn::sprite_text_generator::alignment_type::CENTER);
+    bn::vector<bn::sprite_ptr, 60> text_sprites;
+
+    bn::string<40> hello = traduction::string::HELLO_BUTANO(language);
+    bn::string<40> traduction = traduction::string::TRADUCTION_TOOL(language);
+
+    text_generator_letters.generate(0, -20, hello, text_sprites);
+    text_generator_letters.generate(0, 0, traduction, text_sprites);
+
+    while (!bn::keypad::start_pressed()) {
+
+        if (bn::keypad::a_pressed()) {
+            if (language == traduction::languages::SPANISH) {
+                language = traduction::languages::ENGLISH;
+            }
+            else if (language == traduction::languages::ENGLISH) {
+                language = traduction::languages::FRENCH;
+            }
+            else if (language == traduction::languages::FRENCH) {
+                language = traduction::languages::SPANISH;
+            }
+
+            text_sprites.clear();
+
+
+            hello = traduction::string::HELLO_BUTANO(language);
+            traduction = traduction::string::TRADUCTION_TOOL(language);
+
+
+            text_generator_letters.generate(0, -20, hello, text_sprites);
+            text_generator_letters.generate(0, 0, traduction, text_sprites);
+        }
+
+        info.update();
+        bn::core::update();
+    }
+}
+
 
 int main() {
     bn::core::init();
@@ -139,6 +191,9 @@ int main() {
         bn::core::update();
 
         affine_bg_scene(text_generator);
+        bn::core::update();
+
+        string_scene(text_generator);
         bn::core::update();
     }
 }

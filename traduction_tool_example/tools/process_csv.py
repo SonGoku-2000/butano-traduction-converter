@@ -133,7 +133,7 @@ class ProcessCSV:
                     fila[0], f'Invalid value name "{fila[0]}" at row "{id + 2}" of csv file'
                 )
 
-            respuesta += f'bn::string<{ProcessCSV.get_max_lenght_string(fila[1:])}> {fila[0]}(languages language) {"{"}\n'
+            respuesta += f'bn::string<{ProcessCSV.get_max_lenght_string(fila[1:]) + 1}> {fila[0]}(languages language) {"{"}\n'
             respuesta += ProcessCSV.get_traduction_implementation(
                 languages, fila)
             respuesta += "}\n"
