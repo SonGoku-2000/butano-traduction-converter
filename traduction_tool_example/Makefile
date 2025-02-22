@@ -39,7 +39,10 @@ DATA        	:=
 GRAPHICS    	:=  graphics ../../common/graphics\
 					external_tool/graphics
 AUDIO       	:=  audio ../../common/audio
+AUDIOBACKEND	:=  maxmod
+AUDIOTOOL		:=  
 DMGAUDIO    	:=  dmg_audio ../../common/dmg_audio
+DMGAUDIOBACKEND	:=  default
 ROMTITLE    	:=  TRAD TOOL
 ROMCODE     	:=  SBTP
 USERFLAGS   	:=  
@@ -51,8 +54,13 @@ USERLIBS    	:=
 DEFAULTLIBS 	:=  
 STACKTRACE		:=	
 USERBUILD   	:=  external
-EXTTOOL     	:=  
-# EXTTOOL			:= @$(PYTHON) -B python-script.py --build=$(USERBUILD)
+EXTTOOL			:= @$(PYTHON) -B tools/traduction_converter.py -o=$(USERBUILD) -d=traduction -de=',' -v
+# '-o', 'external_tool',
+#         '-d', 'traduction',
+#         "-v",
+#         "-rmn",
+#         "-rmcsv",
+#         "-de", ','
 #---------------------------------------------------------------------------------------------------------------------
 # Export absolute butano path:
 #---------------------------------------------------------------------------------------------------------------------

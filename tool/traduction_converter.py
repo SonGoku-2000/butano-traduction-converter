@@ -95,15 +95,15 @@ if __name__ == "__main__":
 
     parser.add_argument('--verbose', '-v', action='store_true')
 
-    # args = parser.parse_args()
-    args = parser.parse_args([
-        '-o', 'external_tool',
-        '-d', 'traduction',
-        "-v",
-        "-rmn",
-        "-rmcsv",
-        "-de", ','
-    ])
+    args = parser.parse_args()
+    # args = parser.parse_args([
+    #     '-o', 'external_tool',
+    #     '-d', 'traduction',
+    #     "-v",
+    #     "-rmn",
+    #     "-rmcsv",
+    #     "-de", ','
+    # ])
 
     process(args.output, args.dirs, args.recursive,
             args.remove_invalid_name_characters, args.remove_invalid_csv_characters,

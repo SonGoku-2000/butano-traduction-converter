@@ -236,4 +236,5 @@ pyrightconfig.json
 *.gba
 *.elf
 external_tool
+external
 .vscode

@@ -7,6 +7,8 @@
 #include "bn_affine_bg_ptr.h"
 #include "bn_string.h"
 
+#include "bn_bg_palettes.h"
+
 #include "common_info.h"
 #include "common_variable_8x16_sprite_font.h"
 
@@ -180,6 +182,8 @@ void string_scene(bn::sprite_text_generator& text_generator) {
 
 int main() {
     bn::core::init();
+
+    bn::bg_palettes::set_transparent_color(bn::color(16, 16, 16));
 
     bn::sprite_text_generator text_generator(common::variable_8x16_sprite_font);
 
