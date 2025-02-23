@@ -32,8 +32,8 @@ TARGET      	:=  $(notdir $(CURDIR))
 BUILD       	:=  build
 LIBBUTANO   	:=  ../../butano
 PYTHON      	:=  python
-SOURCES     	:=  src ../../common/src external/src
-INCLUDES    	:=  include ../../common/include external/include\
+SOURCES     	:=  src ../../common/src
+INCLUDES    	:=  include ../../common/include\
 					external_tool/include
 DATA        	:=
 GRAPHICS    	:=  graphics ../../common/graphics\
@@ -53,7 +53,7 @@ USERLIBDIRS 	:=
 USERLIBS    	:=  
 DEFAULTLIBS 	:=  
 STACKTRACE		:=	
-USERBUILD   	:=  external
+USERBUILD   	:=  external_tool
 EXTTOOL			:= @$(PYTHON) -B tools/traduction_converter.py -o=$(USERBUILD) -d=traduction -de=',' -v
 # '-o', 'external_tool',
 #         '-d', 'traduction',

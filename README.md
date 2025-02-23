@@ -3,6 +3,9 @@
 This is a tool that helps with the implementation of translations using 
 butane. It supports sprites, regular_bg, affine_bg and strings.
 
+An example of how to use it is provided in the “traduction_tool_example” folder, to use it
+you should put the example in the “games” or “examples” folder of butano and run the command make
+
 ## traduction_converter.py
 This is the main file that takes care of converting files to a more manageable format.
 
@@ -183,6 +186,9 @@ bn::string<10> farewell = traduction::string::farewell(language);
 # Español {#espanol}
 Esto es ua herramienta que ayuda con la implementacion de traducciones usando 
 butano. Soporta sprites, regular_bg, affine_bg y strings.
+
+Un ejemplo de como usarlo se proporciona en la carpeta "traduction_tool_example", para usarlo
+se debe poner el ejemplo en la carpeta "games" o "examples" de butano y ejecutar el comando make
 
 ## traduction_converter.py {#esp_traduction_converter}
 Es el archivo principal que se encarga de la conversion de los archivos a un formato mas facil de manejar.
